@@ -1,9 +1,13 @@
 import React from 'react'
 import {toast} from 'react-hot-toast';
 import axios from 'axios';
+import {initFlowbite} from 'flowbite';
 
 
 const Card = ({items, handleEdit}) => {
+  useEffect(() => {
+    initFlowbite();
+}, []);
 const handleDelete = async () => {
   try {
     await axios.delete(`https://e-commerce-crud-backend.vercel.app/product/delete/${items._id}`);
