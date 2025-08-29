@@ -58,6 +58,8 @@ const Home = () => {
           ))}
         </div>
       </div>
+          <CustomModal />
+    <EditModal item={productID} />
     </div>
     </>
   )
