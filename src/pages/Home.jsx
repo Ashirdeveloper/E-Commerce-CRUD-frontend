@@ -42,8 +42,6 @@ const Home = () => {
   return (
     <>
       <Navbar />
-    <CustomModal />
-    <EditModal item={productID} />
     <div className="min-h-screen w-full bg-gray-200 p-8">
       <div className="text-center mb-10">
         <h1 className="text-3xl font-bold text-gray-800">
