@@ -2,7 +2,7 @@ import React from 'react'
 import {toast} from 'react-hot-toast';
 import axios from 'axios';
 import {initFlowbite} from 'flowbite';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 
 const Card = ({items, handleEdit}) => {
