@@ -23,7 +23,7 @@ const Login = () => {
     const handleOnSubmit=async (e) => {
         e.preventDefault();
         try {
-            const response= await axios.post('http://localhost:8000/auth/login', value)
+            const response= await axios.post('https://e-commerce-crud-backend.vercel.app//auth/login', value)
             const datas = response.data
             console.log(datas)
         if (response.status==200){
@@ -33,7 +33,7 @@ const Login = () => {
         }
     } catch (error) {
       console.log(error);
-      toast.error(error.response?.data?.message || 'Registration failed');
+      toast.error(error.response?.data?.message || 'Login failed');
     }
     } 
   return (
