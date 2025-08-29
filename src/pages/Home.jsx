@@ -1,4 +1,5 @@
 import React from 'react'
+import { initFlowbite } from 'flowbite';
 import Card from '../components/Card'
 import Navbar from '../components/Navbar'
 import { useState,useEffect } from 'react';
@@ -24,6 +25,9 @@ const Home = () => {
   useEffect(() => {
     GetProduct();
   }, []);
+  useEffect(() => {
+    initFlowbite();
+}, []);
   const handleEdititem = (item) => {
     setproductID(item);
   }
