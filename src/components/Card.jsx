@@ -6,7 +6,7 @@ import axios from 'axios';
 const Card = ({items, handleEdit}) => {
 const handleDelete = async () => {
   try {
-    await axios.delete(`https://e-commerce-crud-backend.vercel.app//product/delete/${items._id}`);
+    await axios.delete(`https://e-commerce-crud-backend.vercel.app/product/delete/${items._id}`);
     toast.success('Product deleted successfully');
     window.location.reload();
   } catch (error) {
