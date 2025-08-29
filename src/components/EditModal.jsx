@@ -20,7 +20,7 @@ const EditModal = ({item}) => {
     const handleOnSubmit=async (e) => {
             e.preventDefault();
             try {
-                const response= await axios.put(`http://localhost:8000/product/update/${item._id}`, {
+                const response= await axios.put(`https://e-commerce-crud-backend.vercel.app/product/update/${item._id}`, {
                     title,
                     description,
                     imageUrl
