@@ -19,7 +19,7 @@ const CustomModal = () => {
     const handleOnSubmit=async (e) => {
             e.preventDefault();
             try {
-                const response= await axios.post(`http://localhost:8000/product/create/${Auth._id}`, {
+                const response= await axios.post(`https://e-commerce-crud-backend.vercel.app/create/${Auth._id}`, {
                     title,
                     description,
                     imageUrl
