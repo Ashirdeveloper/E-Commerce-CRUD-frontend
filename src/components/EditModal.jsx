@@ -7,7 +7,6 @@ import axios from 'axios';     //to send api request to backend
 import {toast} from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
-import { initFlowbite } from 'flowbite';
 
 const EditModal = ({item}) => {
     console.log("Product data", item)
@@ -15,9 +14,6 @@ const EditModal = ({item}) => {
     const [description,setDescription] = useState('');
     const [imageUrl,setImageUrl] = useState('');
     const {Auth} = useSelector((state) => state.Auth)// Access the nested Auth property
-    useEffect(() => {
-    initFlowbite();
-}, []);
     const handleOnSubmit=async (e) => {
             e.preventDefault();
             try {
