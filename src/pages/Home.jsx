@@ -30,7 +30,7 @@ const Home = () => {
 
     const GetProduct = async () => {
     try {
-      const response = await axios.get(`https://e-commerce-crud-backend.vercel.app//product/getproducts/${Auth._id}`)
+      const response = await axios.get(`https://e-commerce-crud-backend.vercel.app/product/getproducts/${Auth._id}`)
       const userId = Auth._id
       // console.log('Authenticated user ID:', userId)
       const data = response.data
