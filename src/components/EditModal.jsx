@@ -8,7 +8,7 @@ import {toast} from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
 
-const EditModal = ({item}) => {
+const EditModal = ({item, onProductUploadSuccess}) => {
     console.log("Product data", item)
     const [title,setTitle] = useState('');
     const [description,setDescription] = useState('');
@@ -25,6 +25,9 @@ const EditModal = ({item}) => {
                  const data = response.data
                  if(response.status===200) {
                      toast.success(data.message);
+                     onProductUploadSuccess();
+                 }
+
                  } else {
                      toast.error(data.message);
                  }
