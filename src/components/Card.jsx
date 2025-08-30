@@ -5,7 +5,7 @@ import {initFlowbite} from 'flowbite';
 import {useState, useEffect} from 'react';
 
 
-const Card = ({items, handleEdit}) => {
+const Card = ({items, handleEdit, onProductUploadSuccess}) => {
   useEffect(() => {
     initFlowbite();
 }, []);
@@ -13,7 +13,7 @@ const handleDelete = async () => {
   try {
     await axios.delete(`https://e-commerce-crud-backend.vercel.app/product/delete/${items._id}`);
     toast.success('Product deleted successfully');
-    window.location.reload();
+    onProductUploadSuccess();
   } catch (error) {
     console.error('Error deleting product:', error);
     toast.error('Failed to delete product');
