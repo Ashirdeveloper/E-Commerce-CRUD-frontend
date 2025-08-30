@@ -15,25 +15,29 @@ const CustomModal = ({onProductUploadSuccess}) => {
     const {Auth} = useSelector((state) => state.Auth)// Access the nested Auth property
 
     const handleOnSubmit=async (e) => {
-            e.preventDefault();
-            try {
-                const response= await axios.post(`https://e-commerce-crud-backend.vercel.app/product/create/${Auth._id}`, {
-                    title,
-                    description,
-                    imageUrl
-                })
-                 const data = response.data
-                if (response.status >= 200 && response.status < 300) {
-            toast.success(data.message);
-            // Call the success callback if it exists
-            if (onProductUploadSuccess) {
-                onProductUploadSuccess();
+            e.preventDefault();
+            try {
+                const response= await axios.post(`https://e-commerce-crud-backend.vercel.app/product/create/${Auth._id}`, {
+                    title,
+                    description,
+                    imageUrl
+                })
+                 const data = response.data
+                if (response.status >= 200 && response.status < 300) {
+            toast.success(data.message);
+            // Call the success callback if it exists
+            if (onProductUploadSuccess) {
+                onProductUploadSuccess();
+            }
+        } else {
+            // Handle any other status codes (e.g., 400, 500)
+            toast.error(data.message);
+        }
+            } catch (error) { // Added this line back
+                console.error('Error in handleOnSubmit:', error); // Corrected error message
+                toast.error('An error occurred. Please try again.'); // Added a more user-friendly error message
             }
-        } else {
-            // Handle any other status codes (e.g., 400, 500)
-            toast.error(data.message);
-        }
-        }
+        }
   return (
     <>
 
