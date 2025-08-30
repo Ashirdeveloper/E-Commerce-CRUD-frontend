@@ -8,7 +8,7 @@ import {toast} from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import {useDispatch,useSelector} from 'react-redux'
 
-const CustomModal = () => {
+const CustomModal = ({onProductUploadSuccess}) => {
     const [title,setTitle] = useState('');
     const [description,setDescription] = useState('');
     const [imageUrl,setImageUrl] = useState('');
@@ -23,14 +23,16 @@ const CustomModal = () => {
                     imageUrl
                 })
                  const data = response.data
-                 if(response.status===200) {
-                     toast.success(data.message);
-                 } else {
-                     toast.error(data.message);
-                 }
-            } catch (error) {
-                console.error('Error fetching data:', error);
+                if (response.status >= 200 && response.status < 300) {
+            toast.success(data.message);
+            // Call the success callback if it exists
+            if (onProductUploadSuccess) {
+                onProductUploadSuccess();
             }
+        } else {
+            // Handle any other status codes (e.g., 400, 500)
+            toast.error(data.message);
+        }
         }
   return (
     <>
