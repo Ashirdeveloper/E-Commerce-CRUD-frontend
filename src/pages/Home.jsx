@@ -17,6 +17,13 @@ const Home = () => {
   const [productID,setproductID]=useState('')
   console.log("ProductID",productID)
   const {Auth} = useSelector((state) => state.Auth)// Access the nested Auth property
+  const [refreshKey, setRefreshKey] = useState(0);
+
+// This function will be called by the modal after a successful upload
+const handleProductUploadSuccess = () => {
+    // This will cause the component to re-render and trigger the useEffect
+    setRefreshKey(prevKey => prevKey + 1);
+};
   useEffect(() => {
     if (!Auth) {
       navigate('/login');
@@ -24,7 +31,7 @@ const Home = () => {
   }, [Auth]);
   useEffect(() => {
     GetProduct();
-  }, []);
+  }, [refreshKey,Auth]);
   useEffect(() => {
     initFlowbite();
 }, []);
@@ -61,7 +68,7 @@ const Home = () => {
           ))}
         </div>
       </div>
-            <CustomModal />
+            <CustomModal onProductUploadSuccess={handleProductUploadSuccess} />
     </div>
     </>
   )
