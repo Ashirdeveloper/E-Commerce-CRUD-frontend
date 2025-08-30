@@ -29,7 +29,7 @@ const EditModal = ({item, onProductUploadSuccess}) => {
                 if (onProductUploadSuccess) {
                     onProductUploadSuccess();
                 }
-            } else {
+            } finally {
                 toast.error(data.message);
             }
         } catch (error) {
