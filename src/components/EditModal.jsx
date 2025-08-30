@@ -22,16 +22,13 @@ const EditModal = ({item, onProductUploadSuccess}) => {
                 description,
                 imageUrl
             });
-
             const data = response.data;
             if (response.status >= 200 && response.status < 300) {
                 toast.success(data.message);
                 if (onProductUploadSuccess) {
                     onProductUploadSuccess();
                 }
-            } finally {
-                toast.error(data.message);
-            }
+
         } catch (error) {
             console.error('Error updating product:', error);
             toast.error('An error occurred. Please try again.');
