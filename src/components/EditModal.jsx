@@ -14,25 +14,29 @@ const EditModal = ({item, onProductUploadSuccess}) => {
     const [description,setDescription] = useState('');
     const [imageUrl,setImageUrl] = useState('');
     const {Auth} = useSelector((state) => state.Auth)// Access the nested Auth property
-    const handleOnSubmit=async (e) => {
-            e.preventDefault();
-            try {
-                const response= await axios.put(`https://e-commerce-crud-backend.vercel.app/product/update/${item._id}`, {
-                    title,
-                    description,
-                    imageUrl
-                })
-                 const data = response.data
-                 if(response.status===200) {
-                     toast.success(data.message);
-                     onProductUploadSuccess();
-                 }
-                 } else {
-                     toast.error(data.message);
-                 }
-            } catch (error) {
-                console.error('Error fetching data:', error);
+    const handleOnSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.put(`https://e-commerce-crud-backend.vercel.app/product/update/${item._id}`, {
+                title,
+                description,
+                imageUrl
+            });
+
+            const data = response.data;
+            if (response.status >= 200 && response.status < 300) {
+                toast.success(data.message);
+                if (onProductUploadSuccess) {
+                    onProductUploadSuccess();
+                }
+            } else {
+                toast.error(data.message);
             }
+        } catch (error) {
+            console.error('Error updating product:', error);
+            toast.error('An error occurred. Please try again.');
+        }
+    };
         }
   return (
     <>
