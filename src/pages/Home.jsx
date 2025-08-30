@@ -64,7 +64,7 @@ const handleProductUploadSuccess = () => {
         {Product.length === 0 ?  <h1 className='text-left text-gray-800 text-xl font-stretch-semi-condensed font-bold'>No products found</h1>: ""}
 
           {Product.map((item) => (//The item in {Product.map((item) => ...) is a single object from the Product array for each iteration of the loop
-            <Card key={item._id} items={item} onProductUploadSuccess={handleProductUploadSuccess} handleEdit={() => handleEdititem(item)} />// .map method is used to iterate the values of an array its syntax is "array.map(callback(currentValue, index, array))"
+            <Card key={item._id} items={item} handleEdit={() => handleEdititem(item)} />// .map method is used to iterate the values of an array its syntax is "array.map(callback(currentValue, index, array))"
           ))}
         </div>
       </div>
